@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "279329790360",
+    "firebase_url": "https://suvlens.firebaseio.com",
+    "project_id": "suvlens",
+    "storage_bucket": "suvlens.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279329790360:android:baa36c49bf9aaee03cf3ed",
+        "android_client_info": {
+          "package_name": "net.azarquiel.caravanapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279329790360-5uomgpdsqh6a3b0t66aumv60ajt6outv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.azarquiel.caravanapp",
+            "certificate_hash": "7b5a475cc00f4370fb159d74d230b32c6df99956"
+          }
+        },
+        {
+          "client_id": "279329790360-stu6kj5i98fqlverev8aapilhvplba9n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5dWRSzF2svNHXomE9l1nTpJC1z2k1sHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279329790360-stu6kj5i98fqlverev8aapilhvplba9n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

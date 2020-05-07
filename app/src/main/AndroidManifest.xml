@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="net.azarquiel.suvlens">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity android:name=".views.RegisterActivity"></activity>
+        <activity android:name=".views.MarcasActivity" />
+        <activity android:name=".views.TiposActivity" />
+        <activity android:name=".views.RangosActivity" />
+        <activity android:name=".views.FavActivity" />
+        <activity android:name=".views.SettingsActivity" />
+        <activity
+            android:name=".views.DetaActivity"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".views.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".views.LoginActivity" />
+    </application>
+
+</manifest>
