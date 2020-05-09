@@ -67,7 +67,6 @@ class TiposActivity : AppCompatActivity() {
             val selected = d ["selected"] as Boolean
 
             if (type == aux.name) {
-//            if (brand == camera.brand) {
                 cams.add(
                     Camera(
                         name = name,

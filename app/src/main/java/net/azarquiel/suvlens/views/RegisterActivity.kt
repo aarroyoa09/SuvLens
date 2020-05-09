@@ -132,7 +132,7 @@ class RegisterActivity : AppCompatActivity() {
         startActivity(mainIntent)
     }
 
-    var selectedPhoto: Uri? = null
+    private var selectedPhoto: Uri? = null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

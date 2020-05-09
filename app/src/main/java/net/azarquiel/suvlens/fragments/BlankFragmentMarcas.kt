@@ -23,8 +23,6 @@ class BlankFragmentMarcas : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var mView: View
     private lateinit var adapter: RvAdapterMarcas
     private lateinit var searchView: SearchView
-    var color: String = ""
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

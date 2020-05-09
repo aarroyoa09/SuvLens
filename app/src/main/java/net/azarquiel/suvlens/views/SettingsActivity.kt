@@ -35,7 +35,5 @@ class SettingsActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().signOut()
             onBackPressed()
         }
-
     }
-
 }

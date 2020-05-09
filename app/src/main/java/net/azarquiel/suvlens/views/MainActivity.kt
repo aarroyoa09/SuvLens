@@ -3,36 +3,23 @@ package net.azarquiel.suvlens.views
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import net.azarquiel.suvlens.R
-import net.azarquiel.suvlens.adapters.CustomAdapter
 import net.azarquiel.suvlens.adapters.ViewPageAdapter
 import net.azarquiel.suvlens.fragments.BlankFragmentMarcas
 import net.azarquiel.suvlens.fragments.BlankFragmentOfertas
@@ -58,7 +45,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private lateinit var searchView: SearchView
-    private lateinit var adapter: CustomAdapter
     private lateinit var db: FirebaseFirestore
     private lateinit var camera: Camera
     private lateinit var marca: Marca
@@ -72,7 +58,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupViewPager(view_pager)
-        view_pager.adapter!!.notifyDataSetChanged()
         setupTabs()
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -118,7 +103,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         val mitvavatar = nav_view.getHeaderView(0).tvavatar
         miivavatar.setImageResource(R.drawable.ic_account_circle_black_24dp)
-        mitvavatar.text = "El presi"
+        mitvavatar.text = "Perfil"
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -150,41 +135,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
-        }
-    }
-
-    private fun initRV() {
-        adapter = CustomAdapter(this, R.layout.row)
-        rvBares.adapter = adapter
-        rvBares.layoutManager = LinearLayoutManager(this)
-    }
-
-    private fun setListener() {
-        val docRef = db.collection("cameras")
-        docRef.addSnapshotListener { snapshot, e ->
-            if (e != null) {
-                Log.w(TAG, "Listen failed.", e)
-                return@addSnapshotListener
-            }
-
-            if (snapshot != null && !snapshot.isEmpty) {
-                documentToList(snapshot.documents)
-                adapter.setCameras(cams)
-            } else {
-                Log.d(TAG, "Current data: null")
-            }
-        }
-    }
-
-    private fun documentToList(documents: List<DocumentSnapshot>) {
-        cams.clear()
-        documents.forEach { d ->
-            val name = d["name"] as String
-            val price = d["price"] as Double
-            val photo = d["photo"] as String
-            val brand = d["brand"] as String
-            val type = d["type"] as String
-            cams.add(Camera(name = name, price = price, photo = photo, brand = brand, type = type))
         }
     }
 
@@ -257,11 +207,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     private fun setupViewPager(viewPager: ViewPager) {
+        var fragment: Fragment? = null
+
         val adapter = ViewPageAdapter(this, supportFragmentManager)
+//        viewPager.setOffscreenPageLimit(1)
         adapter.addFragment(BlankFragmentOfertas(), "Ofertas")
         adapter.addFragment(BlankFragmentTipos(), "Tipos")
         adapter.addFragment(BlankFragmentMarcas(), "Marcas")
         adapter.addFragment(BlankFragmentRangos(), "Rango")
+//        replaceFragment(fragment!!)
+
         viewPager.adapter = adapter
     }
 
@@ -272,5 +227,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //            tabs.getTabAt(i)!!.icon = ContextCompat.getDrawable(this, icon)
 //        }
     }
+
+//    private fun replaceFragment(fragment: Fragment) {
+//        val fragmentTransaction = supportFragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.fragment_container_view_tag, fragment)
+//        fragmentTransaction.commit()
+//    }
 }
 

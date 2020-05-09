@@ -13,12 +13,14 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import net.azarquiel.suvlens.R
 import net.azarquiel.suvlens.adapters.OfertasAdapter
+import net.azarquiel.suvlens.adapters.RvAdapterMarcas
 import net.azarquiel.suvlens.model.Camera
 
-class BlankFragmentOfertas : Fragment(), SearchView.OnQueryTextListener  {
+class BlankFragmentOfertas : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var db: FirebaseFirestore
     private var cams: ArrayList<Camera> = ArrayList()
     private lateinit var searchView: SearchView
+    private lateinit var adapter: OfertasAdapter
     private lateinit var lm: LinearLayoutManager
 
     override fun onCreateView(
@@ -30,12 +32,11 @@ class BlankFragmentOfertas : Fragment(), SearchView.OnQueryTextListener  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = OfertasAdapter(requireActivity().baseContext, R.layout.row2)
-        val raphaela = view.findViewById(R.id.rv1) as RecyclerView
+        adapter = OfertasAdapter(requireActivity().baseContext, R.layout.row2)
+        val rv = view.findViewById(R.id.rv1) as RecyclerView
         db = FirebaseFirestore.getInstance()
-        raphaela.adapter = adapter
-        raphaela.setLayoutManager(GridLayoutManager(context, 2))
-//        raphaela.layoutManager = LinearLayoutManager(activity)
+        rv.adapter = adapter
+        rv.setLayoutManager(GridLayoutManager(context, 2))
         setListener()
         adapter.setCameras(cams)
 
@@ -45,7 +46,6 @@ class BlankFragmentOfertas : Fragment(), SearchView.OnQueryTextListener  {
     }
 
     private fun setListener() {
-        val adapter = OfertasAdapter(requireActivity().baseContext, R.layout.row2)
         val docRef = db.collection("ofertas")
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
@@ -76,12 +76,16 @@ class BlankFragmentOfertas : Fragment(), SearchView.OnQueryTextListener  {
     }
 
 
-
     // ************* <Filtro> ************
     override fun onQueryTextChange(query: String): Boolean {
         val adapter = OfertasAdapter(requireActivity().baseContext, R.layout.row2)
         val original = ArrayList<Camera>(cams)
-        adapter.setCameras(original.filter { camera -> camera.name.startsWith(query, ignoreCase = true)})
+        adapter.setCameras(original.filter { camera ->
+            camera.name.startsWith(
+                query,
+                ignoreCase = true
+            )
+        })
         return false
     }
 

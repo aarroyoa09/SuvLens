@@ -67,7 +67,6 @@ class MarcasActivity : AppCompatActivity() {
             val selected = d ["selected"] as Boolean
 
             if (brand == aux.name) {
-//            if (brand == camera.brand) {
                 cams.add(Camera(name = name, price = price, photo = photo, brand = brand, type = type, rank = rank, selected = selected))
 
             }

@@ -68,18 +68,9 @@ class LoginActivity : AppCompatActivity() {
         title = "Login"
 
         btnregister.setOnClickListener {
-            if (etuser.text.isNotEmpty() && etpass.text.isNotEmpty()) {
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(
-                    etuser.text.toString(),
-                    etpass.text.toString()
-                ).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        showMain(it.result?.user?.email ?: "", ProviderType.BASIC)
-                    } else {
-                        showAlert()
-                    }
-                }
-            }
+            Toast.makeText(this, "Register", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
         btnlogin.setOnClickListener {

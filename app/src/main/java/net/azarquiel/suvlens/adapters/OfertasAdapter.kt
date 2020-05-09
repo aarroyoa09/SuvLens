@@ -36,7 +36,6 @@ class OfertasAdapter (
         notifyDataSetChanged()
     }
 
-
     class ViewHolder(viewlayout: View, val context: Context) : RecyclerView.ViewHolder(viewlayout) {
         fun bind(dataItem: Camera) {
             // itemview es el item de diseño
@@ -46,7 +45,5 @@ class OfertasAdapter (
             Picasso.get().load(dataItem.photo).into(itemView.ivoferta)
             itemView.tag = dataItem
         }
-
     }
-
 }

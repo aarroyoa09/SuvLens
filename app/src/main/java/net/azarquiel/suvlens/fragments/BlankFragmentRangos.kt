@@ -21,6 +21,7 @@ import net.azarquiel.suvlens.views.MarcasActivity
 class BlankFragmentRangos : Fragment() {
     private lateinit var db: FirebaseFirestore
     private var cams: ArrayList<Camera> = ArrayList()
+    private lateinit var adapter: RvAdapterRangos
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,7 @@ class BlankFragmentRangos : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = RvAdapterRangos(requireActivity().baseContext, R.layout.rowmarcas)
+        adapter = RvAdapterRangos(requireActivity().baseContext, R.layout.rowmarcas)
         val rv = view.findViewById(R.id.rvp) as RecyclerView
 
         db = FirebaseFirestore.getInstance()
@@ -41,17 +42,7 @@ class BlankFragmentRangos : Fragment() {
         adapter.setCameras(cams)
     }
 
-
-    fun onClickMarca(v: View) {
-        val marcapulsada = v.tag as Marca
-        val intent = Intent(getActivity(), MarcasActivity::class.java)
-        intent.putExtra("marcapulsada", marcapulsada)
-        startActivity(intent)
-    }
-
     private fun setListener() {
-        val adapter = RvAdapterRangos(requireActivity().baseContext, R.layout.rowmarcas)
-
         val docRef = db.collection("rangoprecio")
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {

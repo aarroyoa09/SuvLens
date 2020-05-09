@@ -19,52 +19,39 @@ import net.azarquiel.suvlens.model.Camera
 class BlankFragmentTipos : Fragment() {
     private lateinit var db: FirebaseFirestore
     private var cams: ArrayList<Camera> = ArrayList()
+    private lateinit var adapter: RvAdapterTipos
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val r= inflater.inflate(R.layout.fragment_blank_tipos, container, false)
-
-
-
+        
         return r
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = RvAdapterTipos(requireActivity().baseContext, R.layout.row)
+        adapter = RvAdapterTipos(requireActivity().baseContext, R.layout.row)
         val rv = view.findViewById(R.id.rvt) as RecyclerView
 
         db = FirebaseFirestore.getInstance()
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(activity)
 
-//        cvmarca.setOnClickListener{onClick(view)}
         setListener()
         adapter.setCameras(cams)
         adapter.notifyDataSetChanged()
     }
 
 
-    fun onClick(v: View) {
-        Toast.makeText(context, "kaka", Toast.LENGTH_LONG).show()
-//        val marcapulsada = v.tag as Marca
-//        val intent = Intent(getActivity(), MarcasActivity::class.java)
-//        intent.putExtra("marcapulsada", marcapulsada)
-//        startActivity(intent)
-    }
-
     private fun setListener() {
-        val adapter = RvAdapterTipos(requireActivity().baseContext, R.layout.row)
-
         val docRef = db.collection("tipos")
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w(ContentValues.TAG, "Listen failed.", e)
                 return@addSnapshotListener
             }
-
             if (snapshot != null && !snapshot.isEmpty) {
                 documentToList(snapshot.documents)
                 adapter.setCameras(cams)
@@ -91,6 +78,5 @@ class BlankFragmentTipos : Fragment() {
 //            }
         }
     }
-
 }
 
