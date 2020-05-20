@@ -1,20 +1,21 @@
 package net.azarquiel.suvlens.views
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.SearchView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
-import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -26,7 +27,6 @@ import net.azarquiel.suvlens.fragments.BlankFragmentOfertas
 import net.azarquiel.suvlens.fragments.BlankFragmentRangos
 import net.azarquiel.suvlens.fragments.BlankFragmentTipos
 import net.azarquiel.suvlens.model.Camera
-import net.azarquiel.suvlens.model.Marca
 
 enum class ProviderType {
     BASIC,
@@ -34,31 +34,28 @@ enum class ProviderType {
 }
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    private val icons = arrayOf(
-        android.R.drawable.ic_input_add,
-        android.R.drawable.ic_input_delete,
-        android.R.drawable.ic_input_get
-    )
 
     companion object {
         const val TAG = "SuvLens"
     }
 
-    private lateinit var searchView: SearchView
     private lateinit var db: FirebaseFirestore
-    private lateinit var camera: Camera
-    private lateinit var marca: Marca
-    private var cams: ArrayList<Camera> = ArrayList()
+    private var user1 = FirebaseAuth.getInstance().currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         //Splash Screen
-        Thread.sleep(1000)
+        Thread.sleep(500)
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         setupViewPager(view_pager)
         setupTabs()
+
+        title="Home"
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -73,8 +70,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
         updateHeader()
         db = FirebaseFirestore.getInstance()
-//        initRV()
-//        setListener()
 
         //SetUp
         val bundle = intent.extras
@@ -95,6 +90,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateHeader() {
         val miivavatar = nav_view.getHeaderView(0).ivavatar
         miivavatar.setOnClickListener {
@@ -102,18 +98,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(intent)
         }
         val mitvavatar = nav_view.getHeaderView(0).tvavatar
-        miivavatar.setImageResource(R.drawable.ic_account_circle_black_24dp)
-        mitvavatar.text = "Perfil"
+        miivavatar.setImageResource(R.drawable.minicon)
+        mitvavatar.text = "SuvLensS"
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
-        var fragment: Fragment? = null
         when (item.itemId) {
             R.id.nav_join -> {
-                Toast.makeText(this, "Login", Toast.LENGTH_LONG).show()
-                val intent = Intent(this, RegisterActivity::class.java)
-                startActivity(intent)
+                    if (user1 != null){
+                        Toast.makeText(this, "Ya estás logeado", Toast.LENGTH_LONG).show()
+                    }else{
+                        val intent = Intent(this, RegisterActivity::class.java)
+                        startActivity(intent)
+                }
             }
             R.id.nav_home -> {
                 Toast.makeText(this, "Home", Toast.LENGTH_LONG).show()
@@ -123,6 +122,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_settings -> {
                 Toast.makeText(this, "Ajustes", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_info -> {
+                Toast.makeText(this, "Info", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, InfoActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -139,43 +143,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        // ************* <Filtro> ************
-        val searchItem = menu.findItem(R.id.search)
-        searchView = searchItem.actionView as SearchView
-        searchView.setQueryHint("Search...")
-//        searchView.setOnQueryTextListener(this)
-        // ************* </Filtro> ************
-
-        return true
-    }
-
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
         if (id == R.id.fav) {
-            val intent = Intent(this, FavActivity::class.java)
-            startActivity(intent)
-            return true
+            if (user1 == null){
+                Toast.makeText(this, "Por favor, inicie sesión para utilizar ésta función", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, RegisterActivity::class.java)
+                startActivity(intent)
+            }else{
+                val intent = Intent(this, FavActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+
         }
         return super.onOptionsItemSelected(item)
     }
 
-    // ************* <Filtro> ************
-//    override fun onQueryTextChange(query: String): Boolean {
-//        val original = ArrayList<Camera>(cams)
-//        adapter.setCameras(original.filter { camera -> camera.name.startsWith(query, ignoreCase = true)})
-//        return false
-//    }
-//
-//    override fun onQueryTextSubmit(text: String): Boolean {
-//        return false
-//    }
-
-    // ************* </Filtro> ************
 
     fun onClickDetail(v: View) {
         val cam = v.tag as Camera
@@ -205,33 +190,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         startActivityForResult(intent, 1)
     }
 
-
     private fun setupViewPager(viewPager: ViewPager) {
-        var fragment: Fragment? = null
-
         val adapter = ViewPageAdapter(this, supportFragmentManager)
-//        viewPager.setOffscreenPageLimit(1)
         adapter.addFragment(BlankFragmentOfertas(), "Ofertas")
         adapter.addFragment(BlankFragmentTipos(), "Tipos")
         adapter.addFragment(BlankFragmentMarcas(), "Marcas")
-        adapter.addFragment(BlankFragmentRangos(), "Rango")
-//        replaceFragment(fragment!!)
+        adapter.addFragment(BlankFragmentRangos(), "Rangos")
 
         viewPager.adapter = adapter
     }
 
     private fun setupTabs() {
         tabs.setupWithViewPager(view_pager)
-        // Ponerles icono, opcional
-//        for ((i, icon) in icons.withIndex()) {
-//            tabs.getTabAt(i)!!.icon = ContextCompat.getDrawable(this, icon)
-//        }
     }
-
-//    private fun replaceFragment(fragment: Fragment) {
-//        val fragmentTransaction = supportFragmentManager.beginTransaction()
-//        fragmentTransaction.replace(R.id.fragment_container_view_tag, fragment)
-//        fragmentTransaction.commit()
-//    }
 }
 

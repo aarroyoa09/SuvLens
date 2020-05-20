@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.rowmarcas.view.*
 import net.azarquiel.suvlens.model.Camera
 
@@ -40,9 +41,7 @@ class RvAdapterRangos (
         fun bind(dataItem: Camera) {
             // itemview es el item de diseño
             // al que hay que poner los datos del objeto dataItem
-//            Picasso.get().load(dataItem.photo).into(itemView.ivcomurow)
-//            Picasso.get().load(dataItem.photo).into(itemView.ivcomurow)
-            itemView.tvmarcaa.text = dataItem.name
+            Picasso.get().load(dataItem.photo1).into(itemView.imageViewmarca)
             itemView.tag = dataItem
         }
     }

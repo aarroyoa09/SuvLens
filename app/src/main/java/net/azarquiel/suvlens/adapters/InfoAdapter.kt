@@ -5,16 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.row.view.*
-import net.azarquiel.suvlens.model.Camera
+import kotlinx.android.synthetic.main.rowinfo.view.*
+import net.azarquiel.suvlens.model.Info
 
-class RvAdapterTipos (
-    val context: Context,
-    val layout: Int
-) : RecyclerView.Adapter<RvAdapterTipos.ViewHolder>() {
+class InfoAdapter (val context: Context,
+                   val layout: Int
+) : RecyclerView.Adapter<InfoAdapter.ViewHolder>() {
 
-    private var dataList: List<Camera> = emptyList()
+    private var dataList: List<Info> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -31,18 +29,21 @@ class RvAdapterTipos (
         return dataList.size
     }
 
-    internal fun setCameras(cams: List<Camera>) {
-        this.dataList = cams
+    internal fun setInfos(infos: List<Info>) {
+        this.dataList = infos
         notifyDataSetChanged()
     }
 
-    class ViewHolder(viewlayout: View, val context: Context) :
-        RecyclerView.ViewHolder(viewlayout) {
-        fun bind(dataItem: Camera) {
+
+    class ViewHolder(viewlayout: View, val context: Context) : RecyclerView.ViewHolder(viewlayout) {
+        fun bind(dataItem: Info){
             // itemview es el item de diseño
             // al que hay que poner los datos del objeto dataItem
-            Picasso.get().load(dataItem.photo1).into(itemView.ivcategoriarow)
+            itemView.tvtitlelibrary.text = dataItem.name
+            itemView.tvgt.text = dataItem.link
             itemView.tag = dataItem
+
         }
+
     }
 }

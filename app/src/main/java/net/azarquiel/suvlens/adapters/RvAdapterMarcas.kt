@@ -43,9 +43,7 @@ class RvAdapterMarcas (
         fun bind(dataItem: Camera) {
             // itemview es el item de diseño
             // al que hay que poner los datos del objeto dataItem
-//            Picasso.get().load(dataItem.photo).into(itemView.ivcomurow)
-            Picasso.get().load(dataItem.photo).into(itemView.ivcomurow)
-//            itemView.tvnombrecomurow.text = dataItem.name
+            Picasso.get().load(dataItem.photo1).into(itemView.ivcomurow)
             itemView.tag = dataItem
         }
     }

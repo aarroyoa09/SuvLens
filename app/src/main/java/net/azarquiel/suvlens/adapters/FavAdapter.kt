@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.rowfav.view.*
+import kotlinx.android.synthetic.main.rowcam.view.*
 import net.azarquiel.suvlens.model.Camera
 import net.azarquiel.suvlens.views.FavActivity
 
@@ -42,9 +42,10 @@ class FavAdapter (
         fun bind(dataItem: Camera) {
             // itemview es el item de diseño
             // al que hay que poner los datos del objeto dataItem
-            itemView.tvfavrow.text = dataItem.name
-            itemView.tvpricefavrow.text = dataItem.price.toString() + "€"
-            Picasso.get().load(dataItem.photo).into(itemView.ivfavrow)
+            itemView.tvcam.text = dataItem.name
+            itemView.tvpricecam.text = dataItem.price.toString() + "€"
+            Picasso.get().load(dataItem.photo1).into(itemView.ivcam)
+            itemView.ratingBarTipos.rating = dataItem.rate.toFloat()
             itemView.tag = dataItem
         }
 

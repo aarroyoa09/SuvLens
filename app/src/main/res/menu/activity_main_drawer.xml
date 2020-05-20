@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
@@ -11,10 +13,37 @@
         <item
             android:id="@+id/nav_join"
             android:icon="@drawable/security"
-            android:title="Join Us" />
+            android:title="Únete" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="Ajustes" />
+
     </group>
+
+
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="single">
+
+<!--        <item-->
+<!--            android:id="@+id/nav_sw"-->
+<!--            android:title="Info">-->
+
+<!--            <Switch-->
+<!--                android:id="@+id/switch1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="24dp"-->
+<!--                android:layout_marginTop="40dp"-->
+<!--                android:text="Switch" />-->
+<!--        </item>-->
+
+
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="Info" />
+    </group>
+
 </menu>

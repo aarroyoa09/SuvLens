@@ -10,13 +10,13 @@
 
     <ImageView
         android:id="@+id/ivregister"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tree" />
+        app:srcCompat="@drawable/minicon" />
 
     <EditText
         android:id="@+id/etuserr"
@@ -25,7 +25,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorGrey"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -43,7 +43,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorGrey"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -74,61 +74,25 @@
         android:layout_width="210dp"
         android:layout_height="71dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="49dp"
         android:layout_marginEnd="32dp"
         android:background="@color/colorPrimary"
         android:text="¿Ya estás registrado? Inicia sesión aquí"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnregisterr" />
-
-    <ImageButton
-        android:id="@+id/btnfbr"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="100dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btngologin"
-        app:srcCompat="@drawable/face" />
-
-    <ImageButton
-        android:id="@+id/btntwr"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="100dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btngologin"
-        app:srcCompat="@drawable/tw" />
-
-    <ImageButton
-        android:id="@+id/btngr"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/button_google"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btngologin"
-        app:srcCompat="@drawable/google" />
+        app:layout_constraintTop_toBottomOf="@+id/btngr" />
 
     <EditText
         android:id="@+id/etname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorGrey"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="textEmailAddress"
@@ -138,5 +102,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivregister" />
+
+    <Button
+        android:id="@+id/btngr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/buttonstroke2"
+        android:drawableStart="@mipmap/symbol"
+        android:paddingStart="15dp"
+        android:text="Google"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnregisterr" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

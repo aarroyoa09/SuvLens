@@ -7,7 +7,7 @@ data class Camera(
     var brand: String = "",
     var type: String = "",
     var price: Double = 0.0,
-    var photo: String = "",
+    var photo1: String = "",
     var photo2: String = "",
     var photo3: String = "",
     var pic1: String = "",
@@ -15,25 +15,16 @@ data class Camera(
     var pic3: String = "",
     var selected: Boolean = false,
     var rank: String = "",
-    var rate: Float = 4.1F
-//    var sensor: String,
-//    var maxres: String,
-//    var iso: String,
-//    var film: String
+    var rate: Double = 4.1,
+    var sensor: String = "",
+    var maxres: String = "",
+    var maxfps: String = "",
+    var iso: String = "",
+    var film: String = ""
 ) : Serializable
 
-data class Tipo(
+data class Info(
     var name: String = "",
-    var photo: String = ""
+    var link: String = ""
 ) : Serializable
 
-data class Marca(
-    var name: String = "",
-    var photom: String = ""
-) : Serializable
-
-data class Precio(
-    var rango: Double = 0.0,
-    var name: String = "",
-    var photo: String = ""
-) : Serializable

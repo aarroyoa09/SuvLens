@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#000000"
+            app:layout_scrollFlags="scroll"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <com.google.android.material.tabs.TabLayout
@@ -23,16 +24,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?attr/colorPrimary"
-            app:tabGravity="center"
-            app:tabIndicatorColor="#FFFFFF"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/colorAccent"
             app:tabIndicatorFullWidth="true"
             app:tabIndicatorHeight="5dp"
             app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/colorAccent"
             app:tabTextColor="#FFFCFC" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_main" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"

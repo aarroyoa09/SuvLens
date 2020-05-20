@@ -23,14 +23,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         when {
-            btnfb.isPressed -> {
-                Toast.makeText(this, "Facebook", Toast.LENGTH_LONG).show()
-            }
             btng.isPressed -> {
                 Toast.makeText(this, "Google", Toast.LENGTH_LONG).show()
-            }
-            btntw.isPressed -> {
-                Toast.makeText(this, "Twitter", Toast.LENGTH_LONG).show()
             }
             btnlogin.isPressed -> {
                 Toast.makeText(this, "Login", Toast.LENGTH_LONG).show()

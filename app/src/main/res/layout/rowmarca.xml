@@ -8,16 +8,17 @@
     android:layout_height="200dp"
     android:layout_margin="5dp"
     android:onClick="onClickMarca"
-    app:cardBackgroundColor="#FEFDFF"
+    app:cardBackgroundColor="@color/colorWhite"
     card_view:cardCornerRadius="30dp"
     card_view:cardElevation="1dp"
     card_view:cardUseCompatPadding="false"
-    card_view:contentPadding="10dp">
+    card_view:contentPadding="0dp">
 
     <ImageView
         android:id="@+id/ivcomurow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="fitXY"
         card_view:srcCompat="@mipmap/ic_launcher" />
 
 </androidx.cardview.widget.CardView>

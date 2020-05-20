@@ -42,7 +42,8 @@ class OfertasAdapter (
             // al que hay que poner los datos del objeto dataItem
             itemView.tvnombreoferta.text = dataItem.name
             itemView.tvpriceoferta.text = dataItem.price.toString() + "€"
-            Picasso.get().load(dataItem.photo).into(itemView.ivoferta)
+            Picasso.get().load(dataItem.photo1).into(itemView.ivoferta)
+            itemView.ratingBarOferta.rating = dataItem.rate.toFloat()
             itemView.tag = dataItem
         }
     }

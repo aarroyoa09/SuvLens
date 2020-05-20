@@ -10,13 +10,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tree" />
+        app:srcCompat="@drawable/minicon" />
 
     <EditText
         android:id="@+id/etuser"
@@ -25,7 +25,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorGrey"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -43,7 +43,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorGrey"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -70,55 +70,39 @@
         app:layout_constraintTop_toBottomOf="@+id/etpass" />
 
     <Button
-        android:id="@+id/btnregister"
+        android:id="@+id/btng"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/button_rounded_stroke"
-        android:text="Register"
-        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonstroke2"
+        android:drawableStart="@mipmap/symbol"
+        android:paddingStart="15dp"
+        android:paddingEnd="25dp"
+        android:text="Google"
+        android:textAlignment="center"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
 
-    <ImageButton
-        android:id="@+id/btnfb"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="100dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnregister"
-        app:srcCompat="@drawable/face" />
-
-    <ImageButton
-        android:id="@+id/btntw"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="100dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/btnregister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/colorPrimary"
+        android:text="Volver a Registro"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnregister"
-        app:srcCompat="@drawable/tw" />
-
-    <ImageButton
-        android:id="@+id/btng"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/button_google"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnregister"
-        app:srcCompat="@drawable/google" />
+        app:layout_constraintTop_toBottomOf="@+id/btng" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

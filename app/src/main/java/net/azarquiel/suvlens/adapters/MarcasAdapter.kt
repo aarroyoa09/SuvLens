@@ -44,9 +44,9 @@ class MarcasAdapter  (
             // al que hay que poner los datos del objeto dataItem
             itemView.tvcam.text = dataItem.name
             itemView.tvpricecam.text = dataItem.price.toString() + "€"
-            Picasso.get().load(dataItem.photo).into(itemView.ivcam)
+            Picasso.get().load(dataItem.photo1).into(itemView.ivcam)
+            itemView.ratingBarTipos.rating = dataItem.rate.toFloat()
             itemView.tag = dataItem
         }
-
     }
 }

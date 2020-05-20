@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="#000000"
-    android:backgroundTint="#000000"
+    android:background="@color/colorAccent"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,29 +13,31 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="76dp"
-        android:layout_height="77dp"
-        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
         app:cardBackgroundColor="#00FFFFFF"
-        app:cardCornerRadius="30dp">
+        app:cardCornerRadius="45dp">
 
         <ImageView
             android:id="@+id/ivavatar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:contentDescription="@string/nav_header_desc"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@drawable/minicon" />
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tvavatar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="left"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="kk"
+        android:text="SuvLenS"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="24sp" />
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 
 </LinearLayout>
