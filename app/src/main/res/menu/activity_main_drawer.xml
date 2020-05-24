@@ -26,18 +26,6 @@
         android:id="@+id/menu_bottom"
         android:checkableBehavior="single">
 
-<!--        <item-->
-<!--            android:id="@+id/nav_sw"-->
-<!--            android:title="Info">-->
-
-<!--            <Switch-->
-<!--                android:id="@+id/switch1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="24dp"-->
-<!--                android:layout_marginTop="40dp"-->
-<!--                android:text="Switch" />-->
-<!--        </item>-->
 
 
         <item

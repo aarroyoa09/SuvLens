@@ -126,6 +126,7 @@ class DetaActivity : AppCompatActivity() {
                     cam.selected = true
 
                 } else if (n == cam.name && cam.selected) {
+                    Toast.makeText(this, "Item eliminado", Toast.LENGTH_SHORT).show()
                     btnFav.setBackgroundResource(R.drawable.ic_favorite_border_black_24dp)
                     db.collection("favs").document(id).delete()
                     cam.selected = false

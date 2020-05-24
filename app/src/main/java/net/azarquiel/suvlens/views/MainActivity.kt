@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //Splash Screen
         Thread.sleep(500)
 
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -99,7 +98,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         val mitvavatar = nav_view.getHeaderView(0).tvavatar
         miivavatar.setImageResource(R.drawable.minicon)
-        mitvavatar.text = "SuvLensS"
+        mitvavatar.text = "SuvLenS"
     }
 
     @RequiresApi(Build.VERSION_CODES.N)

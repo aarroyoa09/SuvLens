@@ -42,7 +42,6 @@ class MarcasActivity : AppCompatActivity() {
     private fun setListener() {
 
         val docRef = db.collection("products")
-//        val docRef = db.collection("cameras")
 
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {

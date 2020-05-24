@@ -49,23 +49,6 @@ class SettingsActivity : AppCompatActivity() {
                 showAlert()
             }
         }
-
-        ivsettings.setOnClickListener {
-            if (user1 == null) {
-                Toast.makeText(
-                    this,
-                    "Necesitas estar logeado para elegir una foto de perfil",
-                    Toast.LENGTH_LONG
-                ).show()
-                val intent = Intent(this, RegisterActivity::class.java)
-                startActivity(intent)
-            } else {
-                val intent = Intent(Intent.ACTION_PICK)
-                intent.type = "image/*"
-                startActivityForResult(intent, 0)
-            }
-
-        }
     }
 
     private fun showAlert() {
@@ -87,7 +70,6 @@ class SettingsActivity : AppCompatActivity() {
 
                 FirebaseAuth.getInstance().signOut()
                 onBackPressed()
-
 
                 val intent = Intent(this, RegisterActivity::class.java)
                 startActivity(intent)
